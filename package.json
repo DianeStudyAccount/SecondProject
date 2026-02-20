@@ -1,31 +1,17 @@
 {
-  "name": "secondproject",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "3dglo",
+  "private": true,
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "webpack --mode=production",
-    "watch": "webpack --watch --mode=development",
-    "start": "webpack serve --mode=development --open"
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DianeStudyAccount/SecondProject.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/DianeStudyAccount/SecondProject/issues"
-  },
-  "homepage": "https://github.com/DianeStudyAccount/SecondProject#readme",
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "eslint": "^10.0.0",
-    "globals": "^17.3.0",
-    "webpack": "^5.105.2",
-    "webpack-cli": "^6.0.1",
-    "webpack-dev-server": "^5.2.3"
+    "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "@vitejs/plugin-legacy": "^7.2.1"
   }
 }

@@ -4,8 +4,12 @@ import timer from "./src/modules/timer";
 import menu from "./src/modules/menu";
 import modalWindow from "./src/modules/modalWindow"
 import smooth from "./src/modules/smoothScroll";
+import calc from "./src/modules/calculator";
+import formValidation from "./src/modules/formValidation";
 
-timer("23 february 2026");
+timer("23 march 2026");
 menu();
 modalWindow();
 smooth();
+calc();
+formValidation();

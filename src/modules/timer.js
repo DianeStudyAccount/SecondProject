@@ -32,6 +32,8 @@ const timer = (deadline) => {
     };
   };
 
+  let intervalID;
+
   const updateClock = () => {
     let getTime = getTimeRemain();
 
@@ -43,13 +45,15 @@ const timer = (deadline) => {
       clearInterval(intervalID);
       return;
     }
+
     timerDays.textContent = String(getTime.days).padStart(2, "0");
     timerHours.textContent = String(getTime.hours).padStart(2, "0");
     timerMinutes.textContent = String(getTime.minutes).padStart(2, "0");
     timerSeconds.textContent = String(getTime.seconds).padStart(2, "0");
   };
+
   updateClock();
-  const intervalID = setInterval(updateClock, 1000);
+  intervalID = setInterval(updateClock, 1000);
 };
 
 export default timer;

@@ -1,7 +1,6 @@
 const modalWindow = () => {
   const modalBtn = document.querySelectorAll(".popup-btn");
   const modal = document.querySelector(".popup");
-  const modalClose = modal.querySelector(".popup-close");
 
   let animateId;
 
@@ -16,7 +15,7 @@ const modalWindow = () => {
     let opacity = 0;
 
     function animate() {
-      opacity += 0.03;
+      opacity += 0.06;
       modal.style.opacity = opacity;
 
       if (opacity < 1) {
@@ -37,7 +36,7 @@ const modalWindow = () => {
     let opacity = 1;
 
     function animate() {
-      opacity -= 0.03;
+      opacity -= 0.06;
       modal.style.opacity = opacity;
 
       if (opacity > 0) {
@@ -53,6 +52,14 @@ const modalWindow = () => {
   modalBtn.forEach((btn) => {
     btn.addEventListener("click", appear);
   });
-  modalClose.addEventListener("click", hide);
+
+  modal.addEventListener("click", (e) => {
+    if (
+      !e.target.closest(".popup-content") ||
+      e.target.classList.contains("popup-close")
+    ) {
+      hide();
+    }
+  });
 };
 export default modalWindow;

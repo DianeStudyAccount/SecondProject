@@ -6,6 +6,7 @@ import modalWindow from "./src/modules/modalWindow"
 import smooth from "./src/modules/smoothScroll";
 import calc from "./src/modules/calculator";
 import formValidation from "./src/modules/formValidation";
+import tabs from "./src/modules/tabs";
 
 timer("23 march 2026");
 menu();
@@ -13,3 +14,4 @@ modalWindow();
 smooth();
 calc();
 formValidation();
+tabs();

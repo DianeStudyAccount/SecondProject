@@ -7,6 +7,8 @@ import smooth from "./src/modules/smoothScroll";
 import calc from "./src/modules/calculator";
 import formValidation from "./src/modules/formValidation";
 import tabs from "./src/modules/tabs";
+import slider from "./src/modules/slider";
+import carousel from "./src/modules/carousel";
 
 timer("23 march 2026");
 menu();
@@ -15,3 +17,10 @@ smooth();
 calc();
 formValidation();
 tabs();
+slider({
+  container: ".portfolio-content",
+  slide: ".portfolio-item",
+  activeSlide: "portfolio-item-active",
+  activeDot: "dot-active",
+});
+carousel();

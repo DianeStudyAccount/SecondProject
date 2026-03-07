@@ -1,52 +1,53 @@
+import { animate } from "./helpers";
+
 const modalWindow = () => {
   const modalBtn = document.querySelectorAll(".popup-btn");
   const modal = document.querySelector(".popup");
 
-  let animateId;
-
   const appear = () => {
     const mobileWidth = window.innerWidth < 768;
+
     if (mobileWidth) {
       modal.style.display = "block";
       modal.style.opacity = 1;
       return;
     }
+
     modal.style.display = "block";
-    let opacity = 0;
 
-    function animate() {
-      opacity += 0.06;
-      modal.style.opacity = opacity;
-
-      if (opacity < 1) {
-        animateId = requestAnimationFrame(animate);
-      }
-    }
-
-    requestAnimationFrame(animate);
+    animate({
+      duration: 300,
+      timing(timeFraction) {
+        return timeFraction;
+      },
+      draw(progress) {
+        modal.style.opacity = progress;
+      },
+    });
   };
 
   const hide = () => {
     const mobileWidth = window.innerWidth < 768;
+
     if (mobileWidth) {
       modal.style.display = "none";
       modal.style.opacity = 0;
       return;
     }
-    let opacity = 1;
 
-    function animate() {
-      opacity -= 0.06;
-      modal.style.opacity = opacity;
+    animate({
+      duration: 300,
+      timing(timeFraction) {
+        return timeFraction;
+      },
+      draw(progress) {
+        modal.style.opacity = 1 - progress;
 
-      if (opacity > 0) {
-        animateId = requestAnimationFrame(animate);
-      } else {
-        modal.style.display = "none";
-      }
-    }
-
-    requestAnimationFrame(animate);
+        if (progress === 1) {
+          modal.style.display = "none";
+        }
+      },
+    });
   };
 
   modalBtn.forEach((btn) => {

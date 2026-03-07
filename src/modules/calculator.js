@@ -1,5 +1,6 @@
+import { animate } from "./helpers";
+
 const calc = (price = 100) => {
-  const calcBlock = document.querySelector(".calc-block");
   const calcItems = document.querySelector(".calc-type");
   const calcSquareMeters = document.querySelector(".calc-square");
   const calcRooms = document.querySelector(".calc-count");
@@ -11,21 +12,15 @@ const calc = (price = 100) => {
   let prevTotal = 0;
 
   const animateCount = (endValue) => {
-    let start = 0;
-
-    const step = () => {
-      start += endValue / 30;
-
-      if (start >= endValue) {
-        calcTotal.textContent = endValue;
-        return;
-      }
-
-      calcTotal.textContent = Math.floor(start);
-      requestAnimationFrame(step);
-    };
-
-    requestAnimationFrame(step);
+    animate({
+      duration: 500,
+      timing(timeFraction) {
+        return timeFraction;
+      },
+      draw(progress) {
+        calcTotal.textContent = Math.min(endValue, Math.floor(progress * endValue));
+      },
+    });
   };
 
   const calculate = () => {

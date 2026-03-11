@@ -9,6 +9,7 @@ import formValidation from "./src/modules/formValidation";
 import tabs from "./src/modules/tabs";
 import slider from "./src/modules/slider";
 import carousel from "./src/modules/carousel";
+import sendForm from "./src/modules/sendForm";
 
 timer("23 march 2026");
 menu();
@@ -24,3 +25,14 @@ slider({
   activeDot: "dot-active",
 });
 carousel();
+["form1", "form2", "form3"].forEach(id => {
+  sendForm({
+    formId: id,
+    someElem: [
+      {
+        type: "block",
+        id: "total"
+      }
+    ]
+  });
+});

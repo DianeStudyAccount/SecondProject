@@ -1,9 +1,17 @@
 const formValidation = () => {
-  const mainForm = document.querySelector("#form1");
-  const footerForm = document.querySelector("#form2");
-  const modalForm = document.querySelector("#form3");
+  const forms = document.querySelectorAll("form");
 
-  const forms = [mainForm, footerForm, modalForm];
+  const nameValidation = {
+    user_name: /[^а-я ]/gi,
+    user_phone: /[^\d()+-]/g,
+    user_message: /[^а-я0-9.,!? ]/gi,
+  };
+
+  const typeValidation = {
+    text: /[^а-я -]/gi,
+    tel: /[^\d()-]/g,
+    email: /[^a-z0-9@\-_\.!~*']/gi,
+  };
 
   const cleanText = (value) => {
     value = value.replace(/[^а-я -]/gi, "");
@@ -23,32 +31,41 @@ const formValidation = () => {
   };
 
   const cleanTel = (value) => {
-    return value.replace(/[^\d()-]/g, "");
+    return value.replace(/[^\d()+-]/g, "");
   };
 
   forms.forEach((form) => {
-    const nameInput = form.querySelector('input[type="text"]');
-    const emailInput = form.querySelector('input[type="email"]');
-    const telInput = form.querySelector('input[type="tel"]');
+    form.addEventListener("input", (e) => {
+      const target = e.target;
+      const name = target.name;
+      const type = target.type;
 
-    if (nameInput) {
-      nameInput.addEventListener("blur", () => {
-        nameInput.value = cleanText(nameInput.value);
-      });
-    }
+      if (nameValidation[name]) {
+        target.value = target.value.replace(nameValidation[name], "");
+      } else if (typeValidation[type]) {
+        target.value = target.value.replace(typeValidation[type], "");
+      }
+    });
+    form.addEventListener(
+      "blur",
+      (e) => {
+        const target = e.target;
+        const type = target.type;
 
-    if (emailInput) {
-      emailInput.addEventListener("blur", () => {
-        emailInput.value = cleanEmail(emailInput.value);
-      });
-    }
+        if (type === "text") {
+          target.value = cleanText(target.value);
+        }
 
-    if (telInput) {
-      telInput.addEventListener("blur", () => {
-        telInput.value = cleanTel(telInput.value);
-      });
-    }
+        if (type === "email") {
+          target.value = cleanEmail(target.value);
+        }
+
+        if (type === "tel") {
+          target.value = cleanTel(target.value);
+        }
+      },
+      true,
+    );
   });
 };
-
 export default formValidation;

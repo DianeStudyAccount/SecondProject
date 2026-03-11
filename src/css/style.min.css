@@ -649,6 +649,59 @@ main a {
 .connect p {
   text-align: left;
 }
+
+.pins {
+  display: flex;
+  gap: 6px;
+  margin: 0 auto;
+  position: relative;
+  top: 60%;
+  transform: translateY(-50%);
+}
+
+.pin {
+  width: 8px;
+  height: 8px;
+  background: #19b5fe;
+}
+.three.pins {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+.three .pin {
+  animation: fade ease 2s infinite;
+}
+
+.three .pin:nth-child(1) {
+  animation-delay: 0.4s;
+}
+
+.three .pin:nth-child(2) {
+  animation-delay: 0.8s;
+}
+
+.three .pin:nth-child(3) {
+  animation-delay: 1.2s;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
 footer {
   background-color: #24241f;
   padding: 5rem;
